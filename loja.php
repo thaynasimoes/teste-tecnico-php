@@ -18,6 +18,17 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
     }
 }
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $nome = $_POST["nome"];
+    $preco = $_POST["preco"];
+    $descricao = $_POST["descricao"];
+
+    $sql = "INSERT INTO tb_produtos (nome, preco, descricao) VALUES ('$nome', '$preco', '$descricao')";
+
+    if(mysqli_query($connection, $sql)){
+        $data = ["message" => "Produto Adicionado com Sucesso"];
+    }
+}
 
 echo json_encode($data);
 
